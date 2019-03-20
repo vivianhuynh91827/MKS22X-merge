@@ -6,6 +6,25 @@ public class Merge {
     mergeSortH(data, 0, data.length-1);
   }
 
+  public static void insertionsort(int[] data, int lo, int hi) {
+    for (int i = lo+1; i <= hi; i ++) {
+      int cur = data[i];
+      for (int x = i - 1; x >= 0; x--) {
+        if (cur < data[x]){
+          data[x+1]=data[x];
+          if (x==0) {
+            data[lo]=cur;
+          }
+        }
+        else if (cur > data[x]) {
+          data[x+1]=cur;
+          x--;
+        }
+      }
+      System.out.println(Arrays.toString(data));
+    }
+  }
+
   public static void mergeSortH(int[] data, int lo, int hi) {
     if (data.length <= 1) {
       return;
@@ -47,10 +66,16 @@ public class Merge {
       }
     }
   }
+
+  public static void mergeSortH(int[] data, int[] temp, int lo, int hi) {
+
+  }
+
   public static void main(String[] args) {
-    int[] test = {10,9,8,7,6,5,4,3,2,1};
+    int[] test = {-1,999,10,9,8,7,6,5,4,3,2,1};
     System.out.println(Arrays.toString(test));
-    mergeSortH(test,0,9);
+    // mergeSortH(test,0,11);
+    insertionsort(test,0,11);
     System.out.println(Arrays.toString(test));
   }
 }
